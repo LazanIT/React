@@ -1,4 +1,5 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import Pet from "./Pet";
 
 const Animals = ["Bird", "Cat","Dog", "Rabbit", "Reptile"];
 
@@ -6,7 +7,22 @@ const SearchParams = () => {
    const [location, setLocation] = useState(""); 
    const [animal, setAnimal] =useState("");
    const [breed, setBreed] = useState("");
-   const breeds = ["Poodle"]
+   const [pets, setPets] = useState([]);
+   const breeds = [""]
+
+    useEffect(() => {
+        requestPets();
+    }, []); // Kada stavimo [], request se samo jednom ne svaki put
+
+    async function requestPets() {
+        const res = await fetch( `http://pets-v2.dev-apis.com/pets?animal=${animal}&location=${location}&breed=${breed}`);
+
+        const json = await res.json();
+
+        setPets(json.pets);
+    }
+
+
     return (
         <div className="search-params">
             <form>
@@ -42,6 +58,16 @@ const SearchParams = () => {
                 </label>
                 <button type="button">Submit</button>
             </form>
+
+            {
+                pets.map((pet) => {
+                    <Pet 
+                    name={pet.name} 
+                    animal={pet.animal} 
+                    breed={pet.breed} 
+                    key={pet.id}/>
+                })
+            }
         </div>
     )
 }
