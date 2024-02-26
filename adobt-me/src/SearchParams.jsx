@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useEffect, useState } from "react";
 import Pet from "./Pet";
 
 const Animals = ["Bird", "Cat","Dog", "Rabbit", "Reptile"];
@@ -10,17 +10,18 @@ const SearchParams = () => {
    const [pets, setPets] = useState([]);
    const breeds = [""]
 
-    useEffect(() => {
-        requestPets();
-    }, []); // Kada stavimo [], request se samo jednom ne svaki put
+   useEffect(() => {
+    requestPets();
+  }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
-    async function requestPets() {
-        const res = await fetch( `http://pets-v2.dev-apis.com/pets?animal=${animal}&location=${location}&breed=${breed}`);
-
-        const json = await res.json();
-
-        setPets(json.pets);
-    }
+  async function requestPets() {
+    const res = await fetch(
+      `http://pets-v2.dev-apis.com/pets?animal=${animal}&location=${location}&breed=${breed}`
+    );
+    const json = await res.json();
+  
+    setPets(json.pets);
+  }
 
 
     return (
@@ -60,13 +61,9 @@ const SearchParams = () => {
             </form>
 
             {
-                pets.map((pet) => {
-                    <Pet 
-                    name={pet.name} 
-                    animal={pet.animal} 
-                    breed={pet.breed} 
-                    key={pet.id}/>
-                })
+              pets.map((pet) => (
+              <Pet name={pet.name} animal={pet.animal} breed={pet.breed} key={pet.id} />
+              ))
             }
         </div>
     )
