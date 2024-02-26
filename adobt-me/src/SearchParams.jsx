@@ -14,6 +14,11 @@ const SearchParams = () => {
     requestPets();
   }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
+/* Kad dodamo [], 
+  time govorimo da se API samo jednom pozove, a ne svaki put
+  kada se nesto izmeni
+*/ 
+
   async function requestPets() {
     const res = await fetch(
       `http://pets-v2.dev-apis.com/pets?animal=${animal}&location=${location}&breed=${breed}`
@@ -26,7 +31,10 @@ const SearchParams = () => {
 
     return (
         <div className="search-params">
-            <form>
+            <form onSubmit={ e => {
+                e.preventDefault();
+                requestPets();
+            }}>
                 <label htmlFor="location">
                     location
                     <input onChange={e => setLocation(e.target.value)} id="location" value={location} placeholder="location" />
