@@ -10,7 +10,6 @@ const SearchParams = () => {
   const [breed, setBreed] = useState("");
   const [breeds] = useBreedList(animal);
 
-
   useEffect(() => {
     requestPets();
   }, []); // eslint-disable-line react-hooks/exhaustive-deps
@@ -27,10 +26,11 @@ const SearchParams = () => {
   return (
     <div className="search-params">
       <form
-      onSubmit={(e) => {
-        e.preventDefault();
-        requestPets();
-      }}>
+        onSubmit={(e) => {
+          e.preventDefault();
+          requestPets();
+        }}
+      >
         <label htmlFor="location">
           Location
           <input
@@ -84,7 +84,7 @@ const SearchParams = () => {
 
         <button>Submit</button>
       </form>
-          <Results pets = {pets} />
+      <Results pets={pets} />
     </div>
   );
 };
