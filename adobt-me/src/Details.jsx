@@ -20,7 +20,7 @@ const Details = () => {
 
     return (
         <div className="details">
-            <Carousel images={pet.images} >   </Carousel>
+            <Carousel images={pet.images} ></Carousel>
             <div>
                 <h1>{pet.name}</h1>
                 <h2>{pet.animal} - {pet.breed} - {pet.city}, {pet.state}
