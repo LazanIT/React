@@ -9,6 +9,7 @@ async function fetchSearch({ queryKey }) {
     throw new Error(`pet search not okay ${animal}. ${location}, ${breed}`);
   }
 
+  // return
   return res.json();
 }
 
