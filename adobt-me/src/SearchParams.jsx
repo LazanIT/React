@@ -35,7 +35,6 @@ const SearchParams = () => {
         <label htmlFor="location">
           Location
           <input
-            //id
             id="location"
             name="location"
             placeholder="Location"
