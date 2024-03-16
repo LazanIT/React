@@ -18,7 +18,7 @@ class ErrorBoundary extends Component {
         if (this.state.hasError) {
             return(
                 <h2>
-                    <Link>Back to the starter page</Link>
+                    <Link>Back to the starting</Link>
                 </h2>
             )
         }
