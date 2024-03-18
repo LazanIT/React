@@ -41,7 +41,7 @@ const SearchParams = () => {
         ) : null
         }
         <label htmlFor="location">
-          Location
+          Mesto 
           <input
             id="location"
             name="location"
