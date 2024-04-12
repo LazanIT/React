@@ -20,8 +20,9 @@ const SearchParams = () => {
   const pets = results?.data?.pets ?? [];
 
   return (
-    <div className="search-params">
+    <div className="my-0 mx-auto w-11/12">
       <form
+        className="rounder-lg mb-10 flex flex-col items-center justify-center bg-gray-200 p-10 shadow-lg"
         onSubmit={(e) => {
           e.preventDefault();
           const formData = new FormData(e.target);
@@ -33,21 +34,14 @@ const SearchParams = () => {
           setRequestParams(object);
         }}
       >
-        {
-        adoptedPet ? (
+        {adoptedPet ? (
           <div className="pet image-container">
             <img src={adoptedPet.images[0]} alt={adoptedPet.name} />
           </div>
-        ) : null
-        }
+        ) : null}
         <label htmlFor="location">
-          Mesto 
-          <input
-            id="location"
-            name="location"
-            placeholder="Location"
-            
-          />
+          Mesto
+          <input id="location" name="location" placeholder="Location" />
         </label>
 
         <label htmlFor="animal">
@@ -57,9 +51,7 @@ const SearchParams = () => {
             value={animal}
             onChange={(e) => {
               setAnimal(e.target.value);
-             
             }}
-           
           >
             <option />
             {ANIMALS.map((animal) => (
@@ -72,11 +64,7 @@ const SearchParams = () => {
 
         <label htmlFor="breed">
           Breed
-          <select
-            disabled={!breeds.length}
-            id="breed"
-            name="breed" 
-          >
+          <select disabled={!breeds.length} id="breed" name="breed">
             <option />
             {breeds.map((breed) => (
               <option key={breed} value={breed}>
