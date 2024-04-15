@@ -9,6 +9,5 @@ export default function render(url, opts) {
     </StaticRouter>,
     opts,
   );
-
   return stream;
 }
