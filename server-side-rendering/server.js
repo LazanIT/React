@@ -18,12 +18,14 @@ const app = express();
 
 app.use(
   "/assets",
-  express.static(path.resolve(__dirname, "./dist/client/assets")),
+  express.static(path.resolve(__dirname, "./dist/client/assets"))
 );
 app.use((req, res) => {
   res.write(parts[0]);
   const stream = renderApp(req.url, {
-    onShellReady() {},
+    onShellReady() {
+      
+    },
     onShellError() {
       // do error handling
     },
@@ -31,6 +33,7 @@ app.use((req, res) => {
       stream.pipe(res);
       res.write(parts[1]);
       res.end();
+      
     },
     onError(err) {
       console.error(err);
