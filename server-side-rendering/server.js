@@ -23,17 +23,12 @@ app.use(
 app.use((req, res) => {
   res.write(parts[0]);
   const stream = renderApp(req.url, {
-    onShellReady() {
-      
-    },
-    onShellError() {
-      // do error handling
-    },
+    onShellReady() {},
+    onShellError() {},
     onAllReady() {
       stream.pipe(res);
       res.write(parts[1]);
       res.end();
-      
     },
     onError(err) {
       console.error(err);
