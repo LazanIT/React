@@ -13,4 +13,5 @@ export const adoptedPetSlice = createSlice({
 });
 
 export const { adopt } = adoptedPetSlice.actions;
+
 export default adoptedPetSlice.reducer;
