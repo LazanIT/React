@@ -15,7 +15,7 @@ const SearchParams = () => {
   const dispatch = useDispatch();
   let { data: pets } = useSearchQuery(searchParams);
   pets = pets ?? [];
-
+  // Middleware
   return (
     <div className="search-params">
       <form
